@@ -8,10 +8,17 @@ grid.addEventListener("mouseover", (event) => {
 
 const button = document.querySelector("button");
 button.addEventListener("click", () => {
-    const squaresPerSide = prompt("Input # of squares per side (max 100)");
-    emptyGrid(document.querySelectorAll(".gridRow"));
-    drawSquares(squaresPerSide);
+    getUserSelection(prompt("Input # of squares per side (max 100)"));
 })
+
+function getUserSelection(userSelection) {
+    if (userSelection <= 100) {
+        emptyGrid(document.querySelectorAll(".gridRow"));
+        drawSquares(userSelection);
+    } else {
+        getUserSelection(prompt("Invalid selection. Please enter # of squares per side (max 100)"));
+    }
+}
 
 function emptyGrid (gridRows) {
     for (let i = 0; i < gridRows.length; i++){
