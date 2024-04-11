@@ -3,7 +3,8 @@ const GRIDSIZE = 960;
 const grid = document.querySelector(".grid");
 grid.addEventListener("mouseover", (event) => {
     const target = event.target;
-    target.style.opacity = 0.2;
+    target.style.backgroundColor = getRandomColor();
+    target.style.opacity = +target.style.opacity + 0.1;
 })
 
 const button = document.querySelector("button");
@@ -18,6 +19,15 @@ function getUserSelection(userSelection) {
     } else {
         getUserSelection(prompt("Invalid selection. Please enter # of squares per side (max 100)"));
     }
+}
+
+function getRandomColor() {
+    let hexcode = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"];
+    let randomColor = "#";
+    for (let i = 0; i < 6; i++) {
+        randomColor += hexcode[Math.floor(Math.random() * hexcode.length)];
+    }
+    return randomColor;
 }
 
 function emptyGrid (gridRows) {
