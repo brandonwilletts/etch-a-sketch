@@ -1,17 +1,22 @@
+const GRIDSIZE = 960;
+
 const grid = document.querySelector(".grid");
 grid.addEventListener("mouseover", (event) => {
-    event.target;
+    const target = event.target;
+    target.style.opacity = 0.2;
 })
 
-function drawSquares (width, height) {
-    for (let i = 1; i <= height; i++) {
-        
+function drawSquares (squaresPerSide) {
+    for (let i = 1; i <= squaresPerSide; i++) {
         const gridRow = document.createElement("div");
         gridRow.classList.add("gridRow");
     
-        for (let i = 1; i <= width; i++) {
+        for (let i = 1; i <= squaresPerSide; i++) {
             const square = document.createElement("div");
+            const squareSize = (GRIDSIZE / squaresPerSide) + "px";
+    
             square.classList.add("square");
+            square.style.cssText = `width: ${squareSize}; height: ${squareSize};`;
             gridRow.appendChild(square);
         }
     
@@ -19,4 +24,4 @@ function drawSquares (width, height) {
     }   
 }
 
-drawSquares(16, 16);
+drawSquares(16);
