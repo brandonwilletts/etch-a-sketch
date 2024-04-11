@@ -1,0 +1,17 @@
+.grid {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.square {
+    height: 16px;
+    width: 16px;
+    background-color: #000000;
+    opacity: 10%;
+}
+
+.gridRow {
+    display: flex;
+    margin-right: auto;
+    flex-direction: row;
+}
